@@ -2,7 +2,7 @@ import pygame
 
 pygame.init()
 
-SPEED_MULTIPLIER = 20
+SPEED_MULTIPLIER = 1
 
 # Constantes de configuración
 WIDTH, HEIGHT = 1080, 720
