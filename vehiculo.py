@@ -1,36 +1,36 @@
 import pygame
 
-from configuracion import BASE_VEHICLE_SPEED, VEHICLE_SIZE, WIDTH, HEIGHT
+from configuracion import VELOCIDAD_BASE_VEHICULO, TAMANO_VEHICULO, ANCHO, ALTURA
 
-class Vehicle:
-    def __init__(self, direction, arrival_time):
-        self.direction = direction
-        self.rect = self.create_rect(direction)
-        self.in_intersection = False
-        self.speed = BASE_VEHICLE_SPEED
-        self.arrival_time = arrival_time
-        self.wait_time = None
+class Vehiculo:
+    def __init__(self, direccion, tiempo_llegada):
+        self.direccion = direccion
+        self.rect = self.crear_rect(direccion)
+        self.en_interseccion = False
+        self.velocidad = VELOCIDAD_BASE_VEHICULO
+        self.tiempo_llegada = tiempo_llegada
+        self.tiempo_espera = None
 
-    def create_rect(self, direction):
-        if direction == "NORTH":
-            return pygame.Rect(WIDTH // 2 - 30, HEIGHT, *VEHICLE_SIZE)
-        elif direction == "SOUTH":
-            return pygame.Rect(WIDTH // 2 + 10, 0, *VEHICLE_SIZE)
-        elif direction == "EAST":
-            return pygame.Rect(0, HEIGHT // 2 - 30, *VEHICLE_SIZE[::-1])
-        elif direction == "WEST":
-            return pygame.Rect(WIDTH, HEIGHT // 2 + 10, *VEHICLE_SIZE[::-1])
+    def crear_rect(self, direccion):
+        if direccion == "NORTE":
+            return pygame.Rect(ANCHO // 2 - 30, ALTURA, *TAMANO_VEHICULO)
+        elif direccion == "SUR":
+            return pygame.Rect(ANCHO // 2 + 10, 0, *TAMANO_VEHICULO)
+        elif direccion == "ESTE":
+            return pygame.Rect(0, ALTURA // 2 - 30, *TAMANO_VEHICULO[::-1])
+        elif direccion == "OESTE":
+            return pygame.Rect(ANCHO, ALTURA // 2 + 10, *TAMANO_VEHICULO[::-1])
 
-    def move(self):
-        if self.direction == "NORTH":
-            self.rect.y -= self.speed
-        elif self.direction == "SOUTH":
-            self.rect.y += self.speed
-        elif self.direction == "EAST":
-            self.rect.x += self.speed
-        elif self.direction == "WEST":
-            self.rect.x -= self.speed
+    def mover(self):
+        if self.direccion == "NORTE":
+            self.rect.y -= self.velocidad
+        elif self.direccion == "SUR":
+            self.rect.y += self.velocidad
+        elif self.direccion == "ESTE":
+            self.rect.x += self.velocidad
+        elif self.direccion == "OESTE":
+            self.rect.x -= self.velocidad
 
-    def is_in_intersection(self):
-        return (WIDTH // 2 - 100 < self.rect.centerx < WIDTH // 2 + 100 and
-                HEIGHT // 2 - 100 < self.rect.centery < HEIGHT // 2 + 100)
+    def esta_en_interseccion(self):
+        return (ANCHO // 2 - 100 < self.rect.centerx < ANCHO // 2 + 100 and
+                ALTURA // 2 - 100 < self.rect.centery < ALTURA // 2 + 100)

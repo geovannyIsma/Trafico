@@ -1,24 +1,24 @@
-from configuracion import GREEN, RED, SPEED_MULTIPLIER
+from configuracion import VERDE, ROJO, FACTOR_VELOCIDAD
 
 
-class TrafficLight:
-    def __init__(self, green_light_duration, red_light_duration):
-        self.timer = 0
-        self.green_light_duration = green_light_duration
-        self.red_light_duration = red_light_duration
-        self.current_direction = "NORTH"
-        self.lights = {"NORTH": GREEN, "SOUTH": RED, "EAST": RED, "WEST": RED}
-        self.directions = ["NORTH", "SOUTH", "EAST", "WEST"]
+class Semaforo:
+    def __init__(self, duracion_luz_verde, duracion_luz_roja):
+        self.temporizador = 0
+        self.duracion_luz_verde = duracion_luz_verde
+        self.duracion_luz_roja = duracion_luz_roja
+        self.direccion_actual = "NORTE"
+        self.luces = {"NORTE": VERDE, "SUR": ROJO, "ESTE": ROJO, "OESTE": ROJO}
+        self.direcciones = ["NORTE", "SUR", "ESTE", "OESTE"]
 
-    def update(self):
-        self.timer += 1 * SPEED_MULTIPLIER
-        if self.timer > self.green_light_duration:
+    def actualizar(self):
+        self.temporizador += 1 * FACTOR_VELOCIDAD
+        if self.temporizador > self.duracion_luz_verde:
             # Cambiar al siguiente semáforo en verde y el resto en rojo
-            self.timer = 0
-            current_index = self.directions.index(self.current_direction)
-            next_index = (current_index + 1) % len(self.directions)
-            self.current_direction = self.directions[next_index]
+            self.temporizador = 0
+            indice_actual = self.direcciones.index(self.direccion_actual)
+            indice_siguiente = (indice_actual + 1) % len(self.direcciones)
+            self.direccion_actual = self.direcciones[indice_siguiente]
 
             # Asignar luces
-            for direction in self.directions:
-                self.lights[direction] = GREEN if direction == self.current_direction else RED
+            for direccion in self.direcciones:
+                self.luces[direccion] = VERDE if direccion == self.direccion_actual else ROJO

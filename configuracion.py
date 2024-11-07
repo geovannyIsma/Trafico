@@ -2,34 +2,34 @@ import pygame
 
 pygame.init()
 
-SPEED_MULTIPLIER = 1
+FACTOR_VELOCIDAD = 1
 
 # Constantes de configuración
-WIDTH, HEIGHT = 1080, 720
-VEHICLE_SIZE = (20, 40)
-BASE_VEHICLE_SPEED = 8 * SPEED_MULTIPLIER # Velocidad base del vehículo
-SPAWN_RATE_PEAK = (20, 40)  # Vehículos por minuto en horas pico
-SPAWN_RATE_OFF_PEAK = (10, 25)  # Vehículos por minuto en horas no pico
-VEHICLE_PASS_TIME = 2  # Tiempo que tarda cada vehículo en cruzar la intersección
+ANCHO, ALTURA = 1080, 720
+TAMANO_VEHICULO = (20, 40)
+VELOCIDAD_BASE_VEHICULO = 8 * FACTOR_VELOCIDAD # Velocidad base del vehículo
+TASA_APARICION_PICO = (20, 40)  # Vehículos por minuto en horas pico
+TASA_APARICION_FUERA_PICO = (10, 25)  # Vehículos por minuto en horas no pico
+TIEMPO_PASO_VEHICULO = 2  # Tiempo que tarda cada vehículo en cruzar la intersección
 
-# Tiempos de los semáforos en segundos teniendo en cuenta el speed multiplier
-GREEN_LIGHT_TIME_PEAK = 20 * 30
-RED_LIGHT_TIME_PEAK = 40 * 30
-GREEN_LIGHT_TIME_OFF_PEAK = 30 * 30
-RED_LIGHT_TIME_OFF_PEAK = 30 * 30
+# Tiempos de los semáforos en segundos
+TIEMPO_LUZ_VERDE_PICO = 20 * 30
+TIEMPO_LUZ_ROJA_PICO = 40 * 30
+TIEMPO_LUZ_VERDE_FUERA_PICO = 30 * 30
+TIEMPO_LUZ_ROJA_FUERA_PICO = 30 * 30
 
 # Colores
-WHITE = (255, 255, 255)
-RED = (255, 0, 0)
-GREEN = (0, 255, 0)
-GRAY = (50, 50, 50)
-BLUE = (0, 0, 255)
-BLACK = (0, 0, 0)
+BLANCO = (255, 255, 255)
+ROJO = (255, 0, 0)
+VERDE = (0, 255, 0)
+GRIS = (50, 50, 50)
+AZUL = (0, 0, 255)
+NEGRO = (0, 0, 0)
 
 # Tiempo total de simulación (en segundos)
-SIMULATION_DURATION = 60 * 3600  # 60 minutos
+DURACION_SIMULACION = 60 * 3600  # 60 minutos
 
 # Inicializar ventana
-window = pygame.display.set_mode((WIDTH, HEIGHT))
+ventana = pygame.display.set_mode((ANCHO, ALTURA))
 pygame.display.set_caption("Simulación de Tráfico en Intersección")
-font = pygame.font.Font(None, 24)
+fuente = pygame.font.Font(None, 24)
