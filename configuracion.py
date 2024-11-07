@@ -7,7 +7,7 @@ FACTOR_VELOCIDAD = 1
 # Constantes de configuración
 ANCHO, ALTURA = 1080, 720
 TAMANO_VEHICULO = (20, 40)
-VELOCIDAD_BASE_VEHICULO = 8 * FACTOR_VELOCIDAD # Velocidad base del vehículo
+VELOCIDAD_BASE_VEHICULO = 8 * FACTOR_VELOCIDAD  # Velocidad base del vehículo
 TASA_APARICION_PICO = (20, 40)  # Vehículos por minuto en horas pico
 TASA_APARICION_FUERA_PICO = (10, 25)  # Vehículos por minuto en horas no pico
 TIEMPO_PASO_VEHICULO = 2  # Tiempo que tarda cada vehículo en cruzar la intersección

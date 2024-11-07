@@ -10,14 +10,14 @@ class SimulacionTrafico:
         self.tasa_aparicion = tasa_aparicion
         self.tiempos_espera = {direccion: [] for direccion in ["NORTE", "SUR", "ESTE", "OESTE"]}
         self.tiempo_actual = 0
-        self.contador_vehiculos = {direccion: 0 for direccion in ["NORTE", "SUR", "ESTE", "OESTE"]}  # Contador de vehículos
+        self.contador_vehiculos = {direccion: 0 for direccion in ["NORTE", "SUR", "ESTE", "OESTE"]}
 
     def generar_vehiculo(self):
         if random.randint(0, 1800 // random.randint(*self.tasa_aparicion) // FACTOR_VELOCIDAD) == 0:
             direccion = random.choice(["NORTE", "SUR", "ESTE", "OESTE"])
             if not self.carriles[direccion] or self.distancia_al_ultimo_vehiculo(direccion) > 50:
                 self.carriles[direccion].append(Vehiculo(direccion, self.tiempo_actual))
-                self.contador_vehiculos[direccion] += 1  # Aumentar el contador al generar un vehículo
+                self.contador_vehiculos[direccion] += 1
 
     def distancia_al_ultimo_vehiculo(self, direccion):
         if not self.carriles[direccion]:
@@ -139,7 +139,6 @@ class SimulacionTrafico:
                         (ANCHO // 2 + 120, ALTURA // 2 + 120)
             pygame.draw.rect(ventana, color, (x, y, 30, 30))
 
-        # Indicadores de tiempo promedio de espera
         tiempos_promedio_espera = self.calcular_tiempos_promedio_espera()
         posiciones_direcciones = {
             "NORTE": (ANCHO // 2 - 60, ALTURA // 2 + 150),
@@ -149,7 +148,7 @@ class SimulacionTrafico:
         }
         for direccion, pos in posiciones_direcciones.items():
             tiempo_promedio = tiempos_promedio_espera[direccion]
-            contador_vehiculos = self.contador_vehiculos[direccion]  # Obtener el contador de vehículos
+            contador_vehiculos = self.contador_vehiculos[direccion]
             superficie_texto = fuente.render(f"{direccion}: {tiempo_promedio:.2f}s, Vehículos: {contador_vehiculos}", True, NEGRO)
             ventana.blit(superficie_texto, pos)
 

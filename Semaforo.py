@@ -1,6 +1,5 @@
 from configuracion import VERDE, ROJO, FACTOR_VELOCIDAD
 
-
 class Semaforo:
     def __init__(self, duracion_luz_verde, duracion_luz_roja):
         self.temporizador = 0
